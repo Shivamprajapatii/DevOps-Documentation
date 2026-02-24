@@ -1,0 +1,17 @@
+#!/bin/bash
+
+DATE=$(date +%F-%H-%M)
+DB_NAME="prod_bollcoDB"
+DB_USER="bollco_prod"
+DB_PASS="Bollco@123prod"
+
+BACKUP_FILE="/tmp/${DB_NAME}-${DATE}.sql.gz"
+
+# Dump & compress
+mysqldump --no-tablespaces -u $DB_USER -p$DB_PASS $DB_NAME | gzip > $BACKUP_FILE
+
+# Upload to S3
+aws s3 cp $BACKUP_FILE s3://bollco-db-backups/
+
+# Remove local file
+rm $BACKUP_FILE

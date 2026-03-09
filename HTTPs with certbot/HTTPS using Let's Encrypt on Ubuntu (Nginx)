@@ -35,4 +35,20 @@ Example domain: api.sahipata.com
 > sudo nginx -t
 
 5. Restart Nginx
+> sudo systemctl restart nginx
 
+
+
+6. Install Certbot (Let's Encrypt Client)
+> sudo apt install certbot python3-certbot-nginx -y
+
+7. Generate SSL Certificate
+> sudo certbot --nginx -d api.sahipata.com
+
+
+8. Certbot Updates Nginx Configuration
+Note - this will automatically update 
+
+
+
+9. Verify HTTPS

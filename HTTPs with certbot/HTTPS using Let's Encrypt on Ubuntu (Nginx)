@@ -50,5 +50,9 @@ Example domain: api.sahipata.com
 Note - this will automatically update 
 
 
-
 9. Verify HTTPS
+
+10. Verify Certificate Auto Renewal
+> sudo certbot renew --dry-run
+
+If no errors appear, renewal is configured correctly.
